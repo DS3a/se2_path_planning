@@ -26,16 +26,16 @@ ament_python_install_package(python_lib)
 
 
 ### NOTE add Cpp nodes
-add_executable(node src/node.cpp)
-target_include_directories(node PUBLIC
+add_executable(planning_node src/planning_node.cpp)
+target_include_directories(planning_node PUBLIC
 ### NOTE you can add additional include dirs for Cpp here
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 ### NOTE
   $<INSTALL_INTERFACE:include>)
-target_compile_features(node PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+target_compile_features(planning_node PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 
 ### NOTE add dependencies to the cpp target
-ament_target_dependencies(node
+ament_target_dependencies(planning_node
   "rclcpp"
   "std_msgs"
   "nav_msgs"
@@ -44,7 +44,7 @@ ament_target_dependencies(node
 ### NOTE
 
 
-install(TARGETS node
+install(TARGETS planning_node
   DESTINATION lib/${PROJECT_NAME})
 
 
